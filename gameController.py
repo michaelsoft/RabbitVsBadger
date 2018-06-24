@@ -7,12 +7,13 @@ from badgerManager import BadgerManager
 pygame.init()
 width, height = 640, 480
 screen=pygame.display.set_mode((width, height))
+grass = pygame.image.load("resources/images/grass.png")
+castle = pygame.image.load("resources/images/castle.png")
 player = Player(screen)
 badgerManager = BadgerManager(screen)
 badgerManager.newBadger()
 badgerManager.newBadger()
-grass = pygame.image.load("resources/images/grass.png")
-castle = pygame.image.load("resources/images/castle.png")
+
 playerActions = [False, False, False, False]
 
 while 1:
@@ -45,6 +46,8 @@ while 1:
                 playerActions[2] = True
             elif event.key==K_d:
                 playerActions[3] = True
+            elif event.key==K_SPACE:
+                player.loadArrow()
     
         if event.type==pygame.KEYUP:
             if event.key==K_w:
@@ -55,6 +58,8 @@ while 1:
                 playerActions[2] = False
             elif event.key==K_d:
                 playerActions[3] = False
+            elif event.key==K_SPACE:
+                player.shoot()
 
     if playerActions[0]:
         player.moveUp()
