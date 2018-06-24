@@ -19,6 +19,13 @@ class Arrow:
     def moving(self, value):
         self.__moving = value
 
+    @property
+    def isOutOfScreen(self):
+        if self.__pos[0] >= self.__screen.get_width() - self.__img.get_width():
+           return True
+        else:
+           return False
+
     def move(self):
         self.__pos[0] += Arrow.__step
     
