@@ -26,6 +26,20 @@ class Arrow:
         else:
            return False
 
+    def isShotBadger(self, badger):
+        arrowRect = pygame.Rect(self.__arrowImg.get_rect())
+        arrowRect.left = self.__pos[0]
+        arrowRect.top = self.__pos[1]
+
+        badgerRect = pygame.Rect(badger.img.get_rect())
+        badgerRect.left = badger.pos[0]
+        badgerRect.top = badger.pos[1]
+
+        if arrowRect.colliderect(badgerRect):
+           return True
+        else:
+           return False
+
     def move(self):
         self.__pos[0] += Arrow.__step
     

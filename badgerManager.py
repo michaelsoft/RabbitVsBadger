@@ -11,6 +11,10 @@ class BadgerManager:
         for badger in self.__badgers:
             badger.draw()
 
+    @property
+    def badgers(self):
+        return __badgers
+
     def get_badgerCount(self):
         return BadgerManager.__badgers.count
 
