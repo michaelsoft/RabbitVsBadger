@@ -2,30 +2,47 @@ from badger import Badger
 import random
 
 class BadgerManager:
-    __badgers = []
-
-    def __init__(self,screen):
+    __maxCount = 3
+    def __init__(self, screen):
         self.__screen = screen
+        self.__badgers = []
+        self.__newBadgerTimer = 100
     
-    def draw(self):
+    def drawBadgers(self):
         for badger in self.__badgers:
             badger.draw()
 
+    def moveBadgers(self):
+        index = 0
+        for badger in self.__badgers:
+            badger.move()
+            if badger.isOutOfScreen():
+                self.__badgers.remove(index)
+            index += 1
+        
+
+
     @property
     def badgers(self):
-        return __badgers
+        return self.__badgers
 
-    def get_badgerCount(self):
-        return BadgerManager.__badgers.count
-
-    def newBadger(self):
+    def __newBadger(self):
         y = random.randint(50, 450)
         pos = [540, y]
-        badger = Badger(self.__screen, pos)
+        badger = Badger(pos, self.__screen)
         self.__badgers.append(badger)
-    
-    def removeBadger(badger):
-        self.__badgers.remove(badger)
 
-if __name__ == '__main__':
-    pass
+    def OnTimeTicked(self):
+        if self.__newBadgerTimer >= 100:
+            self.__newBadgerTimer = 1
+            if len(self.__badgers) < BadgerManager.__maxCount:
+               self.__newBadger()
+        else:
+            self.__newBadgerTimer += 1
+            
+        self.moveBadgers()
+    
+    def removeBadger(self,index):
+        self.__badgers.remove(index)
+    
+

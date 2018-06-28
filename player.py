@@ -1,14 +1,12 @@
 import pygame
-from arrow import Arrow
 
 class Player:
     __step = 5
     
-    def __init__(self,screen):
+    def __init__(self, screen):
+        self.__screen = screen
         self.__img = pygame.image.load("resources/images/dude.png")
         self.__pos = [100,100]
-        self.__screen = screen
-        self.__score = 0
     
     @property
     def img(self):
@@ -17,6 +15,9 @@ class Player:
     @property
     def pos(self):
         return self.__pos
+    
+    def draw(self):
+        self.__screen.blit(self.__img, self.__pos)
 
     def moveUp(self):
         self.__pos[1] -= Player.__step; 
@@ -40,10 +41,7 @@ class Player:
         if self.__pos[0] > maxX:
            self.__pos[0] = maxX 
    
-    def draw(self):
-        self.__screen.blit(self.__img, self.__pos)
 
-    
 
 
 
