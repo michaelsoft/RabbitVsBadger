@@ -5,9 +5,8 @@ class Arrow:
     __pos = []
     __step = 3
 
-    def __init__(self, screen,pos):
+    def __init__(self, pos):
         self.__img = Arrow.__arrowImg
-        self.__screen = screen
         self.__pos = pos
         self.__moving = False
     
@@ -18,13 +17,6 @@ class Arrow:
     @moving.setter
     def moving(self, value):
         self.__moving = value
-
-    @property
-    def isOutOfScreen(self):
-        if self.__pos[0] >= self.__screen.get_width() - self.__img.get_width():
-           return True
-        else:
-           return False
 
     def isShotBadger(self, badger):
         arrowRect = pygame.Rect(self.__arrowImg.get_rect())
@@ -43,6 +35,4 @@ class Arrow:
     def move(self):
         self.__pos[0] += Arrow.__step
     
-    def draw(self):
-        self.__screen.blit(self.__img, self.__pos)
 
