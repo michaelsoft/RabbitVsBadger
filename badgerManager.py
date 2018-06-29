@@ -3,6 +3,7 @@ import random
 
 class BadgerManager:
     __maxCount = 3
+
     def __init__(self, screen):
         self.__screen = screen
         self.__badgers = []
@@ -19,8 +20,6 @@ class BadgerManager:
             if badger.isOutOfScreen():
                 self.__badgers.remove(index)
             index += 1
-        
-
 
     @property
     def badgers(self):
