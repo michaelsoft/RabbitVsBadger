@@ -4,8 +4,12 @@ class Badger:
     __badgerImg1 = pygame.image.load("resources/images/badguy.png")
     __step = 5
 
+<<<<<<< HEAD
     def __init__(self, pos, screen):
         self.__screen = screen
+=======
+    def __init__(self, pos):
+>>>>>>> 4a76bb3f2f5b156f5e270b3a771d8d55c58fad1e
         self.__img = Badger.__badgerImg1
         self.__pos = pos
     

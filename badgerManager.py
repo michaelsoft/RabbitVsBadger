@@ -41,6 +41,7 @@ class BadgerManager:
             
         self.moveBadgers()
     
+    
     def removeBadger(self,index):
         self.__badgers.remove(index)
     

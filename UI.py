@@ -1,5 +1,8 @@
 import pygame
+<<<<<<< HEAD
 from UI import *
+=======
+>>>>>>> 4a76bb3f2f5b156f5e270b3a771d8d55c58fad1e
 
 class UI:
     __grassImg = pygame.image.load("resources/images/grass.png")
