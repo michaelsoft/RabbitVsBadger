@@ -18,7 +18,7 @@ class BadgerManager:
         for badger in self.__badgers:
             badger.move()
             if badger.isOutOfScreen():
-                self.__badgers.remove(index)
+                self.__badgers.pop(index)
             index += 1
 
     @property
